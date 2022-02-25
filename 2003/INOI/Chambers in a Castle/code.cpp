@@ -15,37 +15,24 @@ vector<int> dict;
 
 vector<vector<int>> recursiveFill(int i, int j, vector<vector<int>> array, bool isRoot) {
     array[i][j] = a;
+    if (isRoot==true) {
+        dict.pb(1);
+    }
     if (array[i+1][j] == 0) {
         array = recursiveFill(i+1, j, array, false);
-        if (dict.size() == a-1) {
-            dict[a-2] += 1;
-        } else {
-            dict.pb(1);
-        }
+        dict[a-2] += 1;
     }
     if (array[i-1][j] == 0) {
         array = recursiveFill(i-1, j, array, false);
-        if (dict.size() == a-1) {
-            dict[a-2] += 1;
-        } else {
-            dict.pb(1);
-        }
+        dict[a-2] += 1;
     }
     if (array[i][j+1] == 0) {
         array = recursiveFill(i, j+1, array, false);
-        if (dict.size() == a-1) {
-            dict[a-2] += 1;
-        } else {
-            dict.pb(1);
-        }
+        dict[a-2] += 1;
     }
     if (array[i][j-1] == 0) {
         array = recursiveFill(i, j-1, array, false);
-        if (dict.size() == a-1) {
-            dict[a-2] += 1;
-        } else {
-            dict.pb(1);
-        }
+        dict[a-2] += 1;
     }
     if (isRoot==true) {
         a += 1;
@@ -81,5 +68,5 @@ int main() {
         }
     }
 
-    cout << dict.size() << endl << *max_element(dict.begin(), dict.end()) + 1;
+    cout << dict.size() << endl << *max_element(dict.begin(), dict.end());
 }

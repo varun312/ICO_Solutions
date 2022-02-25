@@ -4,18 +4,20 @@ dict = {}
 def recursiveFill(i, j, array, isRoot):
     global a
     array[i][j] = a
+    if isRoot:
+        dict[a] = 1
     if array[i+1][j] == 0:
         array = recursiveFill(i+1, j, array, False)
-        dict[a] = dict.get(a, 0) + 1
+        dict[a] = dict[a] + 1
     if array[i-1][j] == 0:
         array = recursiveFill(i-1, j, array, False)
-        dict[a] = dict.get(a, 0) + 1
+        dict[a] = dict[a] + 1
     if array[i][j+1] == 0:
         array = recursiveFill(i, j+1, array, False)
-        dict[a] = dict.get(a, 0) + 1
+        dict[a] = dict[a] + 1
     if array[i][j-1] == 0:
         array = recursiveFill(i, j-1, array, False)
-        dict[a] = dict.get(a, 0) + 1
+        dict[a] = dict[a] + 1
     if isRoot:
         a += 1
     return(array)
@@ -37,4 +39,4 @@ for i in dict.values():
     if i>max:
         max = i
 
-print(max+1)
+print(max)
